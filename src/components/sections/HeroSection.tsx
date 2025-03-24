@@ -1,47 +1,66 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
-// HeroSection 컴포넌트: 메인 히어로 섹션을 렌더링합니다.
 export default function HeroSection() {
+  const [showVideo, setShowVideo] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowVideo(true), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    // 전체 섹션: 최소 높이 설정, 중앙 정렬을 위한 flex 설정
-    <section className="relative min-h-[650px] flex items-center">
-      {/* 배경 이미지 영역 */}
+    <section className="relative min-h-[650px]">
+      {/* Background: image → video */}
       <div className="absolute inset-0 z-0">
-        {/* Next.js Image 컴포넌트를 사용하여 배경 이미지 설정 */}
+        {!showVideo ? (
+          <Image
+            src="/image/herobackground.png"
+            alt="Apple TV+ Hero"
+            fill
+            className="object-cover"
+            priority
+          />
+        ) : (
+          <video
+            src="/video/hero-video.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="object-cover w-full h-full"
+          />
+        )}
+      </div>
+
+      {/* Top‑left icon */}
+      <div className="absolute top-6 left-6 z-20">
         <Image
-          src="https://web-assets.same.dev/euDUX1741588677964"
-          alt="Fruit TV+ Hero"
-          fill
-          className="object-cover"
-          priority
+          src="/image/appletv+icon.png"
+          alt="Logo Icon"
+          width={48}
+          height={48}
         />
       </div>
 
-      {/* Hero 컨텐츠 영역 */}
-      <div className="container relative z-10 mt-24 md:mt-0 px-6">
-        <div className="max-w-lg">
-          {/* 메인 타이틀 */}
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">Fruit TV+</h1>
-          {/* 서브 타이틀 */}
-          <h2 className="text-2xl md:text-3xl font-semibold mb-4">
-            Get total access to Fruit TV+.
-          </h2>
-          {/* 설명 문구 */}
-          <p className="text-xl md:text-2xl text-gray-300 mb-8">
-            Stream star-studded Fruit Originals and more.
-          </p>
-          {/* 무료 체험 버튼 */}
-          <Button className="apple-button px-8 py-6 text-base">
-            Accept Free Trial
-          </Button>
-          {/* 추가 안내 문구 */}
-          <p className="mt-4 text-sm text-gray-400">
-            7days free, then $9.99/month.
-          </p>
-        </div>
+      {/* Bottom‑left hero content (½ size) */}
+      <div className="absolute bottom-6 left-6 z-20 max-w-md">
+        <h1 className="text-3xl md:text-4xl font-bold mb-2">Apple TV+</h1>
+        <h2 className="text-xl md:text-2xl font-semibold mb-2">
+          Get total access to Apple TV+.
+        </h2>
+        <p className="text-lg md:text-xl text-gray-300 mb-4">
+          Stream star‑studded Fruit Originals and more.
+        </p>
+        <Button className="apple-button px-6 py-4 text-sm">
+          Accept Free Trial
+        </Button>
+        <p className="mt-2 text-xs text-gray-400">
+          7 days free, then $9.99/month.
+        </p>
       </div>
     </section>
   );
