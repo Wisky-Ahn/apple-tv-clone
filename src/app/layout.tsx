@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Fruit TV+",
-  description: "Browse all movies, TV shows, and more from Fruit TV+. Watch all Fruit Originals here and on the Fruit TV app across your devices.",
+  title: "Apple TV+",
+  description: "Browse all movies, TV shows, and more from Apple TV+. Watch all Apple Originals here and on the Apple TV app across your devices.",
   icons: {
     icon: "/favicon.ico",
   },

@@ -37,12 +37,12 @@ export default function HeroSection() {
       </div>
 
       {/* Top‑left icon */}
-      <div className="absolute top-6 left-6 z-20">
+      <div className="absolute top-[80px] left-10 z-50">
         <Image
           src="/image/appletv+icon.png"
           alt="Logo Icon"
-          width={48}
-          height={48}
+          width={96}
+          height={96}
         />
       </div>
 
